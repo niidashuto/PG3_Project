@@ -1,20 +1,21 @@
 #include <stdio.h>
 
-class SceneManager 
+class SceneChange 
 {
 private:
 	static const char SCENE_NAME[4][10];
 
 	int scene = 0;
 
-	SceneManager() = default;
-	~SceneManager() = default;
+	SceneChange() = default;
+
+	~SceneChange() = default;
 public:
-	static SceneManager* GetInstance();
-
-	SceneManager(const SceneManager& obj) = delete;
-
-	SceneManager& operator=(const SceneManager& obj) = delete;
+	static SceneChange* GetInstance();
+	//コピーコンストラクタを無効にする
+	SceneChange(const SceneChange& obj) = delete;
+	//代入演算子を無効化する
+	SceneChange& operator=(const SceneChange& obj) = delete;
 
 	void PrintScene() {
 		printf("sceneNo:%d\nsceneName:%s\n\n", scene, SCENE_NAME[scene]);
@@ -26,7 +27,7 @@ public:
 
 };
 
-const char SceneManager::SCENE_NAME[4][10] =
+const char SceneChange::SCENE_NAME[4][10] =
 {
 	"Title",
 	"NewGame",
@@ -36,7 +37,7 @@ const char SceneManager::SCENE_NAME[4][10] =
 
 int main()
 {
-	SceneManager* sceneManager = SceneManager::GetInstance();
+	SceneChange* sceneManager = SceneChange::GetInstance();
 	while (true)
 	{
 		sceneManager->PrintScene();
@@ -59,9 +60,9 @@ int main()
 	}
 }
 
-SceneManager* SceneManager::GetInstance()
+SceneChange* SceneChange::GetInstance()
 {
-	static SceneManager sceneManager;
+	static SceneChange sceneManager;
 
 	return &sceneManager;
 }
