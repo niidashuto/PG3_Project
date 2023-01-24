@@ -1,6 +1,5 @@
 #include "Enemy.h"
 
-
 bool Enemy::isAlive_ = true;
 
 int main()
