@@ -8,7 +8,7 @@ private:
 	static bool isAlive_;
 
 public:
-	void SetAlive(bool isExist);
+	void SetAlive(bool isAlive);
 	void Print();
 	
 };
